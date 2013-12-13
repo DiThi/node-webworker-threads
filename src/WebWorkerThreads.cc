@@ -34,6 +34,7 @@ static int debug_allocs= 0;
 #include "queues_a_gogo.cc"
 #include "bson.cc"
 #include "jslib.cc"
+#include "arraybuffers.h"
 
 //using namespace node;
 using namespace v8;
@@ -286,6 +287,17 @@ static void eventLoop (typeThread* thread) {
 
     global->Set(String::NewSymbol("postMessage"), FunctionTemplate::New(postMessage)->GetFunction());
     global->Set(String::NewSymbol("__postError"), FunctionTemplate::New(postError)->GetFunction());
+
+
+    global->Set(String::NewSymbol("ArrayBuffer"), FunctionTemplate::New(ArrayBuffers::ArrayBuffer)->GetFunction());
+    global->Set(String::NewSymbol("Int8Array"), FunctionTemplate::New(ArrayBuffers::Int8Array)->GetFunction());
+    global->Set(String::NewSymbol("Uint8Array"), FunctionTemplate::New(ArrayBuffers::Uint8Array)->GetFunction());
+    global->Set(String::NewSymbol("Int16Array"), FunctionTemplate::New(ArrayBuffers::Int16Array)->GetFunction());
+    global->Set(String::NewSymbol("Uint16Array"), FunctionTemplate::New(ArrayBuffers::Uint16Array)->GetFunction());
+    global->Set(String::NewSymbol("Int32Array"), FunctionTemplate::New(ArrayBuffers::Int32Array)->GetFunction());
+    global->Set(String::NewSymbol("Uint32Array"), FunctionTemplate::New(ArrayBuffers::Uint32Array)->GetFunction());
+    global->Set(String::NewSymbol("Float32Array"), FunctionTemplate::New(ArrayBuffers::Float32Array)->GetFunction());
+    global->Set(String::NewSymbol("Float64Array"), FunctionTemplate::New(ArrayBuffers::Float64Array)->GetFunction());
 
     Local<Object> threadObject= Object::New();
     global->Set(String::NewSymbol("thread"), threadObject);

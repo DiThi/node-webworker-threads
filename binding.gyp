@@ -2,7 +2,7 @@
   'targets': [
     {
       'target_name': 'WebWorkerThreads',
-      'sources': [ 'src/WebWorkerThreads.cc' ],
+      'sources': [ 'src/WebWorkerThreads.cc', 'src/arraybuffers.cc' ],
       'cflags!': [ '-fno-exceptions', '-DV8_USE_UNSAFE_HANDLES' ],
       'cflags_cc!': [ '-fno-exceptions', '-DV8_USE_UNSAFE_HANDLES' ],
       'conditions': [
